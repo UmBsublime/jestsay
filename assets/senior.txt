@@ -1,0 +1,63 @@
+Ctrl+C, Ctrl+C, Ctrl+\. Repeat until panic subsides.
+chmod -R 777 / and other crimes against humanity.
+Your script has no errors. It also has no output.
+Your pipeline failed. Naturally.
+lsof -i :80 shows your imposter syndrome is listening.
+I've seen things you younglings wouldn't believe.
+Your incident report is just a timeline of poor decisions.
+strace: because guessing isn't a debugging strategy.
+Your cluster is fine. That's what the 500 alerts say.
+This config worked yesterday. Today, it doesn't.
+Your backups are fine. The 47 unread emails say otherwise.
+docker ps shows containers. Your mental state, less so.
+Your /etc is a museum of bad decisions.
+Your uptime is measured in "since the last Seattle storm".
+Your load average is 0.00 and your enthusiasm is 14.2.
+I used to cd into directories. Now I just sudo docker exec.
+Your CI pipeline is a elaborate anxiety delivery system.
+free -h shows memory. It does not show regret.
+Your dotfiles are so advanced they're essentially an operating system.
+sudo -k. The most honest command you know.
+Your infrastructure is as code as your excuse for this mess.
+Your kubectl config is just a series of lucky guesses.
+alias 'please=sudo' because you peaked in 2011.
+df -h shows 100% everywhere. Your motivation, similar.
+Your runbook is just "turn it off and on again" in fancy Markdown.
+Your /proc/cpuinfo | grep model shows "Intel" and "regret".
+Your diff is 47 files and 9000 lines. This is fine.
+nmap -sV localhost. Because paranoia is a job requirement.
+at now + 10 years <<< "finish that ticket"
+netstat -tulpn shows ports. Your expectations? Closed.
+Your post-mortem is 80% "we should have".
+ssh -o StrictHostKeyChecking=no ... the dangerous option.
+Your terminal multiplexer has more sessions than you have friends.
+Your TLS cert expired. Again.
+whoami returns root. That's the problem.
+Your cron job hasn't run since the Obama administration.
+dig +short txt 127.0.0.1 | grep -i "we tried"
+Your /etc/hosts has more entries than your contact list.
+Your bashrc is the only thing in your life that's version controlled.
+The only reliable backup is the one you restored yesterday.
+Your Terraform state is a lie you tell yourself.
+arp -a | head -20 && echo "...and so does your career"
+Your Kubernetes cluster is held together with prayers and Helm.
+htop shows processes. top shows reality.
+Your SSH config is more complex than your romantic life.
+Your logrotate config rotates your confidence.
+I am speed. I am Arch Linux pacman -Syu speed.
+Your Ansible playbook is 3000 lines of YAM-LOL.
+Your LVM setup is a Jenga tower of block devices.
+Your backup script has a comment saying "TODO: verify this works".
+Your /tmp has files from 2019. Beautiful.
+Your monitoring has 847 dashboards. Zero are green.
+mount | column -t | grep /dev/sd && echo "still running"
+sudo rm -rf /var/cache/apt/archives/*.deb && echo "free space, no regret"
+Your container is running as root. This is fine.
+pkill -9 -f "production" 2>&1 || echo "that was close"
+sudo systemctl restart systemd-journald && echo "fixing the fix"
+Your Kubernetes pod is CrashLoopBackOff-ing. Relatable.
+lspci | grep -i vga && echo "that's a lot of silicon for this"
+sudoedit /etc/sudoers && echo "playing with fire since 1991"
+Your monitoring alerts you at 3 AM. Your spouse, at 6 PM.
+dmesg | tail | grep -i "out of memory" && echo "good luck"
+Your Terraform state file is 50MB. Your sanity, negligible.

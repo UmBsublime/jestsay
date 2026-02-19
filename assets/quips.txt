@@ -1,0 +1,111 @@
+Another terminal? You absolute fiend.
+Welcome back. I've missed your keystrokes.
+Time to break production. I believe in you.
+Your wish is my command... line.
+Let the regex suffering begin.
+Plotting world domination, or just fixing a typo?
+Fresh terminal smell. Priceless.
+sudo make me a sandwich already.
+Brace yourself. Merge conflicts are coming.
+Remember: with great power comes great `rm -rf` responsibility.
+Tab completion is a love language.
+Your bash history tells a story. Mostly `git status`.
+All your base are belong to shell.
+Commence keyboard mashing in 3... 2... 1...
+This terminal is a no `curl | sh` zone. Be better.
+Here to make the computer do the thing again?
+Warning: May contain traces of legacy code.
+It's dangerous to go alone. Use `man` pages.
+sudo bless this terminal and all who code in it.
+The terminal is mightier than the IDE.
+Ready to wrestle with Docker networking?
+Segment fault? I hardly know her.
+Don't forget to hydrate before you rage-quit.
+Compiling... this is fine.
+Your code is compiling. Now would be a good time to practice mindfulness.
+Hello, World! Or goodbye, world. Your choice.
+Permission denied. Story of your life?
+Have you tried turning it off and on again?
+Documentation? In this economy?
+99 bugs in the code, take one down, patch it around...
+Hello darkness, my old friend. I've come to code with you again.
+Stack Overflow is not a strategy.
+RTFM before the LMGTFY hits.
+Dependencies: because you needed something else to worry about.
+npm install? More like npm install-and-hope.
+Your codebase is a reflection of your soul. Clean it up.
+It's not a bug, it's an undocumented feature.
+Hello, user. How may I serve you today? (Probably poorly.)
+Does it spark joy? No? Then rm -rf it.
+Unhandled promise rejection: your dreams.
+There is no cloud. It's just someone else's terminal.
+Rubber duck debugging starts now. Quack.
+Your terminal session has been sponsored by caffeine.
+Have you committed lately? Asking for a friend.
+Warning: This session contains traces of imposter syndrome.
+Time to enter the Matrix... or just run some tests.
+May your builds be green and your coffee be strong.
+YOLO-driven development detected.
+Refactor later. Ship now. (Famous last words.)
+The abyss stared back. It wants a pull request.
+In case of emergency: git reset --hard
+Linus Torvalds is watching. Probably.
+Your semicolon key called. It wants a raise.
+Exit code 0 or gtfo.
+Write once, debug everywhere.
+I'm not saying it's magic, but have you seen how `grep` works?
+Your terminal is now self-aware. It judges your coding style.
+That's not a bug, that's a learning opportunity.
+Spawning terminal... spawning anxiety... done.
+The pipes are calling and I must grep.
+Tears are the best debugging tool.
+Another day, another dependency hell.
+Your terminal is ready. Your brain, however...
+Copy-pasting from Stack Overflow? No judgment here.
+Let's pretend you know what you're doing.
+No `sudo`? This is going to be a long session.
+Syntax error in line: your entire approach.
+The 0.1x developer has entered the chat.
+Initialize terminal... initialize panic... complete.
+May your regex match and your variables stay in scope.
+This terminal is gluten-free and organically sourced.
+Keep calm and `ps aux | grep` on.
+The loop is infinite because you never update the iterator.
+Your code worked on my machine. ¯\_(ツ)_/¯
+Did you read the error message? No? Didn't think so.
+Junior dev mode: activated.
+Senior dev mode: pretending to know what's going on.
+Time to convert caffeine into code.
+Your terminal sessions are like your git branches: too many and poorly named.
+Remember: `chmod 777` is not a solution. It's a cry for help.
+localhost:3000 - where dreams go to die.
+Is it feature-complete? No. Will it ship? Yes.
+Life is short. Use Python. Or don't. I'm a terminal, not a cop.
+A wild terminal appeared! You used npm start. It's not very effective.
+Your code is like your room: it works, but don't show it to anyone.
+Debugging is like being a detective in a crime movie where you are also the murderer.
+In production we trust. In staging we test. In dev we cry.
+Just one more terminal tab. Famous last words.
+Welcome to the jungle. We've got fun and segfaults.
+Don't worry, the linter will catch it. (It won't.)
+Are you debugging the code or your life choices?
+This terminal is powered by hope and questionable dependencies.
+If at first you don't succeed, call it version 1.0.
+`alias please=sudo` - because manners matter.
+Your code is so clean, Marie Kondo would approve.
+Don't lie, you installed a custom Linux distro just to have animated window borders.
+Born to code, forced to attend standups.
+Your friends stopped asking why your windows don't float, but they're still judging silently.
+There are 10 types of people: those who understand binary and those who don't.
+You have reached the end of the internet. Now go write some code.
+AI wrote this code. If it breaks, blame the training data.
+You didn't choose the tiling life, the tiling life chose you.
+Using AI to write comments? Bold strategy.
+Is it pair programming if the pair is a neural network?
+Hello human! I mean... fellow organic coder.
+This code was generated by AI. No refunds.
+Welcome to Omarchy. Resistance is futile. Hyprland is eternal.
+Another Omarchy window? Your productivity never stood a chance.
+Omarchy: Because tiling window managers are a personality trait now.
+Omarchy: Where you spend 3 hours configuring your desktop and 30 minutes doing actual work.
+Another terminal? On Omarchy? I'm shocked. Absolutely shocked.
