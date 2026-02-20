@@ -148,7 +148,6 @@ install_files() {
     # Install data files
     cp "$SCRIPT_DIR/assets/quips.txt" "$DATA_DIR/"
     cp "$SCRIPT_DIR/assets/senior.txt" "$DATA_DIR/"
-    cp "$SCRIPT_DIR/assets/commands.txt" "$DATA_DIR/"
     cp "$SCRIPT_DIR/assets/pixpop_bubble_long.ans" "$DATA_DIR/"
     cp "$SCRIPT_DIR/assets/pixpop_bubble_short.ans" "$DATA_DIR/"
     log_info "Installed data files to $DATA_DIR"
