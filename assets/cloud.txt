@@ -1,0 +1,40 @@
+OVH support: 48 hours to read your ticket. 3 weeks to respond.
+Your OVH server is in rescue mode. Your career, also.
+OVH sent "abuse report" for your legitimate traffic. Classic.
+ssh root@ovh-ip returns "denied" because OVH firewall rules exist in another dimension.
+OVH control panel loading... just kidding, it's broken.
+Your OVH backup is 20€ and uploads at 200KB/s. Enjoy your weekend.
+OVH network outage: the 3rd one this month. Your users have a betting pool.
+vSphere on OVH: because you enjoy pain and slow support tickets.
+OVH IPv6: it works in /64 but not your /56. Mystery.
+Your OVH proxmox cluster has 1 node because "scheduling constraints".
+You forgot to stop that r6g.4xlarge. Your kid's college fund, however, is fine.
+EBS snapshot: 3 hours and "completed". That's what the status says.
+CloudFormation: "resource drift detected". Also: nothing you can do about it.
+Terminate EC2 instance. Wait, that was prod. Wait, why did it work?
+NAT Gateway: $45/month just to feel like a real network engineer.
+AWS Data Transfer Out: the surprise birthday gift you didn't want.
+us-east-1 is down. us-east-1 is always down. us-east-1 is a lifestyle.
+Your EKS node joined! Just kidding, it joined the other cluster. Oh wait, neither.
+Security Hub finding: "S3 bucket public". Fix: "change nothing, accept risk".
+RDS maintenance window: 3 AM Sunday. Your phone will ring. It always does.
+gcloud projects list --filter='lifecycleState=ACTIVE' | wc -l shows 47. That's your problem now.
+BigQuery: ran one query. "Query usage: $47.23". In 3 seconds.
+GCP quota request: "We'll review in 3-5 business days". That's 3 weeks.
+GKE LoadBalancer: creating... creating... creating... failed. No reason given.
+Your GCP network is 10.128.0.0/9 because someone in 2017 was optimistic.
+Cloud SQL: maintenance scheduled for 2 AM. Your phone: "maintenance scheduled for 2 AM".
+gcloud beta sdk install 2>&1 | grep -i "not recommended" → google agrees, don't do it.
+GCP "free tier": ended 3 months ago. Your bill: "hello old friend".
+terraform apply on GCP: "1 to add, 847 to change, 63 to destroy". Sleep on it.
+Your GCP Service Account has more roles than your HR department.
+az vm show returns "running". Your website returns 502. Azure is fine.
+Azure AD: login failed. Error code: AADB2C. That's all the info you get.
+Your Azure subscription is active. Your will to debug Entra ID, not so much.
+az network vnet subnet update: "ResourceNotFound". That's not ominous at all.
+Azure Cost Management: "This month: $4,200". Last month: $180. No explanation.
+Azure Functions: cold start so cold it brought a jacket.
+Azure Firewall: $1,500/month to block traffic. Worth it.
+Your Azure DevOps pipeline failed on "Gradle build". Again. No logs.
+az aks get-credentials → "error". That's the entire output.
+Azure status: "All services operational". Your resources: "429 Too Many Requests".
