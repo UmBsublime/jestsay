@@ -2,7 +2,7 @@
 """
 jestsay - cowsay with a twist
 
-Overlays witty quips onto ANSI art images with 
+Overlays witty quips onto ANSI art images with
 proper color handling when possible.
 """
 
@@ -14,11 +14,21 @@ import textwrap
 from dataclasses import dataclass
 from typing import List, Tuple, Optional
 
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 
 DEFAULT_XDG_DATA = os.path.join(os.path.expanduser("~/.local"), "share")
 DEFAULT_XDG_DATA_HOME = os.environ.get("XDG_DATA_HOME", DEFAULT_XDG_DATA)
-DEFAULT_JESTER = os.path.join(DEFAULT_XDG_DATA_HOME, "jestsay", "pixpop_bubble_short.ans")
+DEFAULT_XDG_CONFIG_HOME = os.environ.get(
+    "XDG_CONFIG_HOME", os.path.join(os.path.expanduser("~/.config"))
+)
+DEFAULT_JESTER = os.path.join(
+    DEFAULT_XDG_DATA_HOME, "jestsay", "pixpop_bubble_short.ans"
+)
 DEFAULT_QUIPS = os.path.join(DEFAULT_XDG_DATA_HOME, "jestsay", "quips.txt")
+DEFAULT_CONFIG = os.path.join(DEFAULT_XDG_CONFIG_HOME, "jestsay", "config.toml")
 
 DEFAULT_X_OFFSET = 23
 DEFAULT_Y_OFFSET = 8
@@ -26,6 +36,37 @@ DEFAULT_WIDTH = 33
 DEFAULT_HEIGHT = 3
 DEFAULT_ALIGN = "center"
 DEFAULT_COLOR = "#775A95"
+
+
+def find_config(config_path: Optional[str] = None) -> Optional[str]:
+    """Find config file path, checking in order: custom path, default."""
+    if config_path and os.path.isfile(config_path):
+        return config_path
+    if os.path.isfile(DEFAULT_CONFIG):
+        return DEFAULT_CONFIG
+    return None
+
+
+def load_config(config_path: Optional[str] = None) -> dict:
+    """Load configuration from TOML file."""
+    config_file = find_config(config_path)
+
+    if not config_file:
+        print(
+            f"Warning: Config file not found. Using Defaults",
+            file=sys.stderr,
+        )
+
+        return {}
+
+    try:
+        with open(config_file, "rb") as f:
+            return tomllib.load(f)
+    except (tomllib.TOMLDecodeError, OSError) as e:
+        print(
+            f"Warning: Failed to load config from {config_file}: {e}", file=sys.stderr
+        )
+        return {}
 
 
 @dataclass
@@ -82,7 +123,9 @@ class AnsiImage:
                     seq_end += 1
 
                 seq = line[i:seq_end]
-                fg, bg, bold, fg_explicit, bg_explicit = self._parse_escape_sequence(seq)
+                fg, bg, bold, fg_explicit, bg_explicit = self._parse_escape_sequence(
+                    seq
+                )
 
                 if fg_explicit:
                     current_fg = fg
@@ -100,9 +143,11 @@ class AnsiImage:
 
     def _parse_escape_sequence(
         self, seq: str
-    ) -> Tuple[Optional[Tuple[int, int, int]], Optional[Tuple[int, int, int]], bool, bool, bool]:
+    ) -> Tuple[
+        Optional[Tuple[int, int, int]], Optional[Tuple[int, int, int]], bool, bool, bool
+    ]:
         """Parse an ANSI escape sequence for colors.
-        
+
         Returns: (fg_color, bg_color, bold, fg_explicitly_set, bg_explicitly_set)
         """
         fg = None
@@ -224,11 +269,17 @@ def parse_color(hex_color: str) -> Tuple[int, int, int]:
     """Parse hex color code to RGB tuple."""
     hex_color = hex_color.lstrip("#")
     if len(hex_color) not in (3, 6):
-        raise ValueError(f"Invalid hex color length: {len(hex_color)} (expected 3 or 6)")
+        raise ValueError(
+            f"Invalid hex color length: {len(hex_color)} (expected 3 or 6)"
+        )
     if len(hex_color) == 3:
         hex_color = "".join(c * 2 for c in hex_color)
     try:
-        return (int(hex_color[0:2], 16), int(hex_color[2:4], 16), int(hex_color[4:6], 16))
+        return (
+            int(hex_color[0:2], 16),
+            int(hex_color[2:4], 16),
+            int(hex_color[4:6], 16),
+        )
     except ValueError as e:
         raise ValueError(f"Invalid hex color '{hex_color}': {e}")
 
@@ -306,12 +357,20 @@ Examples:
     )
 
     parser.add_argument(
+        "--config",
+        default=None,
+        help="Path to config file (default: ~/.config/jestsay/config.toml)",
+    )
+
+    parser.add_argument(
         "--jester",
         default=DEFAULT_JESTER,
         help=f"Path to ANSI art file (default: {DEFAULT_JESTER})",
     )
     parser.add_argument(
-        "--quips", default=DEFAULT_QUIPS, help=f"Path to quips file (default: {DEFAULT_QUIPS})"
+        "--quips",
+        default=DEFAULT_QUIPS,
+        help=f"Path to quips file (default: {DEFAULT_QUIPS})",
     )
     parser.add_argument(
         "--x-offset",
@@ -326,10 +385,16 @@ Examples:
         help=f"Vertical position for text start (default: {DEFAULT_Y_OFFSET})",
     )
     parser.add_argument(
-        "--width", type=int, default=DEFAULT_WIDTH, help=f"Width of text area (default: {DEFAULT_WIDTH})"
+        "--width",
+        type=int,
+        default=DEFAULT_WIDTH,
+        help=f"Width of text area (default: {DEFAULT_WIDTH})",
     )
     parser.add_argument(
-        "--height", type=int, default=DEFAULT_HEIGHT, help=f"Number of text lines (default: {DEFAULT_HEIGHT})"
+        "--height",
+        type=int,
+        default=DEFAULT_HEIGHT,
+        help=f"Number of text lines (default: {DEFAULT_HEIGHT})",
     )
     parser.add_argument(
         "--align",
@@ -349,6 +414,55 @@ Examples:
     )
 
     args = parser.parse_args()
+
+    config = load_config(args.config)
+
+    def get_config_value(key, default):
+        config_key = key.replace("-", "-")
+        return config.get(key, config.get(config_key, default))
+
+    args.jester = (
+        args.jester
+        if args.jester != DEFAULT_JESTER
+        else get_config_value("jester", DEFAULT_JESTER)
+    )
+    args.quips = (
+        args.quips
+        if args.quips != DEFAULT_QUIPS
+        else get_config_value("quips", DEFAULT_QUIPS)
+    )
+    args.x_offset = (
+        args.x_offset
+        if args.x_offset != DEFAULT_X_OFFSET
+        else get_config_value("x-offset", DEFAULT_X_OFFSET)
+    )
+    args.y_offset = (
+        args.y_offset
+        if args.y_offset != DEFAULT_Y_OFFSET
+        else get_config_value("y-offset", DEFAULT_Y_OFFSET)
+    )
+    args.width = (
+        args.width
+        if args.width != DEFAULT_WIDTH
+        else get_config_value("width", DEFAULT_WIDTH)
+    )
+    args.height = (
+        args.height
+        if args.height != DEFAULT_HEIGHT
+        else get_config_value("height", DEFAULT_HEIGHT)
+    )
+    args.align = (
+        args.align
+        if args.align != DEFAULT_ALIGN
+        else get_config_value("align", DEFAULT_ALIGN)
+    )
+    args.color = (
+        args.color
+        if args.color != DEFAULT_COLOR
+        else get_config_value("color", DEFAULT_COLOR)
+    )
+    if not args.no_bold:
+        args.no_bold = get_config_value("no-bold", False)
 
     try:
         text_color = parse_color(args.color)
@@ -383,9 +497,7 @@ Examples:
     x_offset = max(0, min(args.x_offset, image.width - text_width))
     y_offset = max(0, min(args.y_offset, image.height - text_height))
 
-    overlay_text(
-        image, text_lines, x_offset, y_offset, text_color, not args.no_bold
-    )
+    overlay_text(image, text_lines, x_offset, y_offset, text_color, not args.no_bold)
 
     print(image.render())
 
