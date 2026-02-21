@@ -5,8 +5,6 @@
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
 # Configuration
 PREFIX="${PREFIX:-$HOME/.local}"
 INSTALL_DIR="${INSTALL_DIR:-$PREFIX/bin}"
@@ -89,7 +87,7 @@ confirm_uninstall() {
     echo "  - $INSTALL_DIR/jestsay"
     echo "  - $DATA_DIR"
     echo
-    read -p "Continue? [y/N] " response
+    read -r -p "Continue? [y/N] " response
     
     case "$response" in
         [yY][eE][sS]|[yY])
