@@ -1,0 +1,29 @@
+# jestsay configuration file
+# CLI arguments take precedence over config values
+
+# Path to ANSI art file (default: $XDG_DATA_DIR/jestsay/pixpop_bubble_short.ans)
+# jester = "/path/to/ansi/art.ans"
+
+# Path to quips file (default: $XDG_DATA_DIR/jestsay/quips.txt)
+# quips = "/path/to/quips.txt"
+
+# Horizontal position for text start (default: 23)
+# x-offset = 23
+
+# Vertical position for text start (default: 8)
+# y-offset = 8
+
+# Width of text area (default: 33)
+# width = 33
+
+# Number of text lines (default: 3)
+# height = 3
+
+# Text alignment: left, center, right (default: center)
+# align = "center"
+
+# Text color as hex code (default: #775A95)
+# color = "#775A95"
+
+# Disable bold text (default: false, bold is enabled)
+# no-bold = false

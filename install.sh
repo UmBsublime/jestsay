@@ -10,6 +10,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Configuration
 PREFIX="${PREFIX:-$HOME/.local}"
 INSTALL_DIR="${INSTALL_DIR:-$PREFIX/bin}"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/jestsay"
 DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/jestsay"
 
 # Colors for output
@@ -26,15 +27,17 @@ Install jestsay to your system.
 
 OPTIONS:
     -p, --prefix DIR      Installation prefix (default: ~/.local)
-    -d, --data-dir DIR    Data directory (default: ~/.local/share/jestsay)
-    -s, --system          Install system-wide (requires sudo)
-    -f, --force           Overwrite existing installation
-    -h, --help            Show this help message
+    -d, --data-dir DIR     Data directory (default: ~/.local/share/jestsay)
+    -c, --config-dir DIR   Config directory (default: ~/.config/jestsay)
+    -s, --system           Install system-wide (requires sudo)
+    -f, --force            Overwrite existing installation
+    -h, --help             Show this help message
 
 ENVIRONMENT:
-    PREFIX                Installation prefix
-    INSTALL_DIR           Binary installation directory
-    XDG_DATA_HOME         XDG data directory (used to determine data location)
+    PREFIX                 Installation prefix
+    INSTALL_DIR            Binary installation directory
+    XDG_DATA_HOME          XDG data directory (used to determine data location)
+    XDG_CONFIG_HOME        XDG config directory (used to determine config location)
 
 EXAMPLES:
     # Install to ~/.local (default)
@@ -45,6 +48,12 @@ EXAMPLES:
 
     # Install to custom location
     PREFIX=/opt/jestsay $0
+
+    # Install with custom data directory
+    XDG_DATA_HOME=/custom/share $0
+
+    # Install with custom config directory
+    XDG_CONFIG_HOME=/custom/config $0
 EOF
 }
 
@@ -80,10 +89,15 @@ parse_args() {
                 DATA_DIR="$2"
                 shift 2
                 ;;
+            -c|--config-dir)
+                CONFIG_DIR="$2"
+                shift 2
+                ;;
             -s|--system)
                 PREFIX="/usr/local"
                 INSTALL_DIR="/usr/local/bin"
                 DATA_DIR="/usr/local/share/jestsay"
+                CONFIG_DIR="/usr/local/etc/jestsay"
                 shift
                 ;;
             -f|--force)
@@ -124,13 +138,14 @@ check_existing_installation() {
 create_directories() {
     log_info "Creating directories..."
     
-    # Try to create directories, with fallback for permission issues
-    if ! mkdir -p "$INSTALL_DIR" 2>/dev/null; then
-        log_error "Cannot create $INSTALL_DIR"
+    # Create config directory
+    if ! mkdir -p "$CONFIG_DIR" 2>/dev/null; then
+        log_error "Cannot create $CONFIG_DIR"
         echo "Check permissions or use sudo for system-wide install"
         exit 1
     fi
     
+    # Create data directory
     if ! mkdir -p "$DATA_DIR" 2>/dev/null; then
         log_error "Cannot create $DATA_DIR"
         exit 1
@@ -145,7 +160,13 @@ install_files() {
     chmod +x "$INSTALL_DIR/jestsay"
     log_info "Installed binary to $INSTALL_DIR/jestsay"
     
+    # Install config file
+    mkdir -p "$CONFIG_DIR"
+    cp "$SCRIPT_DIR/config.toml" "$CONFIG_DIR/"
+    log_info "Installed config to $CONFIG_DIR/config.toml"
+
     # Install data files
+    mkdir -p "$DATA_DIR"
     cp "$SCRIPT_DIR/assets/"*.txt "$DATA_DIR/"
     cp "$SCRIPT_DIR/assets/"*.ans "$DATA_DIR/"
     log_info "Installed data files to $DATA_DIR"
@@ -170,11 +191,13 @@ print_summary() {
     echo
     echo "Binary: $INSTALL_DIR/jestsay"
     echo "Data:   $DATA_DIR"
+    echo "Config: $CONFIG_DIR/config.toml"
     echo
     echo "Usage:"
     echo "    jestsay                  # Show random quip with jester"
     echo "    jestsay --quips /path/file   # Use custom quips file"
     echo "    jestsay --jester /path/art   # Use custom ANSI art"
+    echo "    jestsay --config /path/config  # Use custom config file"
     echo
 }
 
