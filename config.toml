@@ -1,10 +1,10 @@
 # jestsay configuration file
 # CLI arguments take precedence over config values
 
-# Path to ANSI art file (default: $XDG_DATA_DIR/jestsay/pixpop_bubble_short.ans)
+# Path to ANSI art file (default: $XDG_DATA_HOME/jestsay/pixpop_bubble_short.ans)
 # jester = "/path/to/ansi/art.ans"
 
-# Path to quips file (default: $XDG_DATA_DIR/jestsay/quips.txt)
+# Path to quips file (default: $XDG_DATA_HOME/jestsay/quips.txt)
 # quips = "/path/to/quips.txt"
 
 # Horizontal position for text start (default: 23)

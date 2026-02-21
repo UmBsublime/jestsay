@@ -13,6 +13,7 @@ This is just some fun ai slop with a human touch.
 
 ## Options
 
+- `--config` - Path to config file (default: ~/.config/jestsay/config.toml)
 - `--jester FILE` - Path to ANSI art file
 - `--quips FILE` - Path to quips file
 - `--x-offset INT` - Horizontal position for text start
