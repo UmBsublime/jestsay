@@ -369,8 +369,9 @@ Examples:
     )
     parser.add_argument(
         "--quips",
-        default=DEFAULT_QUIPS,
-        help=f"Path to quips file (default: {DEFAULT_QUIPS})",
+        nargs="+",
+        default=[DEFAULT_QUIPS],
+        help=f"Path(s) to quips file(s) (default: {DEFAULT_QUIPS})",
     )
     parser.add_argument(
         "--x-offset",
@@ -428,9 +429,11 @@ Examples:
     )
     args.quips = (
         args.quips
-        if args.quips != DEFAULT_QUIPS
-        else get_config_value("quips", DEFAULT_QUIPS)
+        if args.quips != [DEFAULT_QUIPS]
+        else get_config_value("quips", [DEFAULT_QUIPS])
     )
+    if isinstance(args.quips, str):
+        args.quips = [args.quips]
     args.x_offset = (
         args.x_offset
         if args.x_offset != DEFAULT_X_OFFSET
@@ -478,13 +481,15 @@ Examples:
         sys.exit(1)
 
     try:
-        quips = load_quips(args.quips)
-    except FileNotFoundError:
-        print(f"Error: Quips file not found: {args.quips}", file=sys.stderr)
+        quips = []
+        for quip_file in args.quips:
+            quips.extend(load_quips(quip_file))
+    except FileNotFoundError as e:
+        print(f"Error: Quips file not found: {e.filename}", file=sys.stderr)
         sys.exit(1)
 
     if not quips:
-        print("Error: No quips found in file", file=sys.stderr)
+        print("Error: No quips found", file=sys.stderr)
         sys.exit(1)
 
     quip = random.choice(quips)
