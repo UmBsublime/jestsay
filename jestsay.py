@@ -9,6 +9,7 @@ proper color handling when possible.
 import argparse
 import os
 import random
+import re
 import sys
 import textwrap
 from dataclasses import dataclass
@@ -492,7 +493,11 @@ Examples:
         print("Error: No quips found", file=sys.stderr)
         sys.exit(1)
 
-    quip = random.choice(quips)
+    piped_quip = None
+    if not sys.stdin.isatty():
+        piped_quip = re.sub(r"[\n\r]+", " ", sys.stdin.read()).strip()
+
+    quip = piped_quip if piped_quip else random.choice(quips)
 
     text_lines = format_quip(quip, args.width, args.height, args.align)
 
