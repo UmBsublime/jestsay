@@ -364,47 +364,55 @@ Examples:
     )
 
     parser.add_argument(
+        "-j",
         "--jester",
         default=DEFAULT_JESTER,
         help=f"Path to ANSI art file (default: {DEFAULT_JESTER})",
     )
     parser.add_argument(
+        "-q",
         "--quips",
         nargs="+",
         default=[DEFAULT_QUIPS],
         help=f"Path(s) to quips file(s) (default: {DEFAULT_QUIPS})",
     )
     parser.add_argument(
+        "-x",
         "--x-offset",
         type=int,
         default=DEFAULT_X_OFFSET,
         help=f"Horizontal position for text start (default: {DEFAULT_X_OFFSET})",
     )
     parser.add_argument(
+        "-y",
         "--y-offset",
         type=int,
         default=DEFAULT_Y_OFFSET,
         help=f"Vertical position for text start (default: {DEFAULT_Y_OFFSET})",
     )
     parser.add_argument(
+        "-w",
         "--width",
         type=int,
         default=DEFAULT_WIDTH,
         help=f"Width of text area (default: {DEFAULT_WIDTH})",
     )
     parser.add_argument(
+        "-H",
         "--height",
         type=int,
         default=DEFAULT_HEIGHT,
         help=f"Number of text lines (default: {DEFAULT_HEIGHT})",
     )
     parser.add_argument(
+        "-a",
         "--align",
         choices=["left", "center", "right"],
         default=DEFAULT_ALIGN,
         help=f"Text alignment: left|center|right (default: {DEFAULT_ALIGN})",
     )
     parser.add_argument(
+        "-c",
         "--color",
         default=DEFAULT_COLOR,
         help=f"Text color as hex code (default: {DEFAULT_COLOR})",
